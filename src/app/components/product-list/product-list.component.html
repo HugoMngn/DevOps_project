@@ -1,4 +1,5 @@
 <div class="product-container">
+  <h4>Liste des produits:</h4>
   <table class="product-table">
     <thead>
       <tr>
@@ -16,7 +17,8 @@
         <td>{{ product.id }}</td>
         <td>{{ product.nom }}</td>
         <td>
-          <button (click)="viewDetails(product); $event.stopPropagation()">Details</button>
+          <button class="details-btn" (click)="toggleDetails(product); $event.stopPropagation()">Details</button>
+          <button class="delete-btn" (click)="onDelete(product); $event.stopPropagation()">Supprimer</button>
         </td>
       </tr>
     </tbody>

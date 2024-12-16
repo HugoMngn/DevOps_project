@@ -14,8 +14,8 @@ import { ProductFormComponent } from "./components/product-form/product-form.com
 export class AppComponent {
  
   public products: Product[] = [
-    {id:1 , nom:"Papier 1" ,texture:"Granulé fin" , grammage:"90gr" , couleur:"Rouge" },
-    {id:2 , nom:"Papier 2" ,texture:"Plastifié" , grammage:"70gr" , couleur:"Doré" }
+    {id:1 , nom:"Papier 1" ,texture:"Granulé fin" , grammage:"90 gr" , couleur:"Rouge" },
+    {id:2 , nom:"Papier 2" ,texture:"Plastifié" , grammage:"70 gr" , couleur:"Doré" }
   ];
   public selectedProduct: Product | undefined;
 
@@ -31,6 +31,10 @@ export class AppComponent {
     this.selectedProduct = undefined;
   }
   
+  onDeleteProduct(product: Product): void {
+    this.products = this.products.filter(p => p.id !== product.id); 
+  }
+
   onSaveProduct(updatedProduct: Product) {
     if (this.selectedProduct) {
       const index = this.products.findIndex((p) => p.id === this.selectedProduct?.id);

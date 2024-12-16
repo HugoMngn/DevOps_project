@@ -11,8 +11,9 @@ import { CommonModule } from '@angular/common';
 })
 export class ProductListComponent {
   @Input() products: Product[] = [];
-  selectedProduct: any = null;
+  selectedProduct: Product | null = null;
   @Output() clickProduct = new EventEmitter<Product>();
+  @Output() deleteProduct = new EventEmitter<Product>(); 
 
   onProductClic(event: MouseEvent, product: Product): void {
     if (!(event.target instanceof HTMLButtonElement)) {
@@ -25,7 +26,18 @@ export class ProductListComponent {
     return product.id;
   }
 
-  viewDetails(product: Product): void {
-    this.selectedProduct = product;
+  toggleDetails(product: Product): void {
+    // Si le produit sélectionné est déjà celui des détails, on le retire
+    if (this.selectedProduct === product) {
+      this.selectedProduct = null;
+    } else {
+      this.selectedProduct = product;
+    }
+  }
+
+  onDelete(product: Product): void {
+    if (confirm(`Êtes-vous sûr de vouloir supprimer le produit "${product.nom}" ?`)) {
+      this.deleteProduct.emit(product); 
+    }
   }
 }

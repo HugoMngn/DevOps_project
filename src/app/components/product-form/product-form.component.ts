@@ -17,6 +17,7 @@ export class ProductFormComponent {
   @Output() cancelEdit = new EventEmitter<void>();
 
   productForm: FormGroup;
+  isNewProduct: boolean = false; 
 
   constructor() {
     this.productForm = new FormGroup({
@@ -27,18 +28,19 @@ export class ProductFormComponent {
     });
   }
 
+  
   public onNew() {
     this.selectedProduct = undefined;
+    this.isNewProduct = true; 
     this.productForm.reset();
   }
 
-  public showFieldError(fieldName: string, errorKind: string = ''): boolean {
-    const control = this.productForm.get(fieldName);
-    if (control?.touched) {
-      return errorKind ? control.errors?.[errorKind] : !control.valid;
-    }
-    return false;
+   public onCancel() {
+    this.cancelEdit.emit();
+    this.isNewProduct = false;
+    this.productForm.reset();
   }
+
 
   public onSubmit() {
     if (this.productForm.valid) {
@@ -47,15 +49,10 @@ export class ProductFormComponent {
     }
   }
 
-  public onCancel() {
-    this.cancelEdit.emit();
-    this.productForm.reset();
-
-  }
-
   public ngOnChanges(changes: SimpleChanges): void {
     if (changes['selectedProduct']) {
       if (this.selectedProduct) {
+        this.isNewProduct = false; 
         this.productForm.setValue({
           nom: this.selectedProduct.nom,
           texture: this.selectedProduct.texture,
@@ -66,5 +63,13 @@ export class ProductFormComponent {
         this.productForm.reset();
       }
     }
+  }
+
+  public showFieldError(fieldName: string, errorKind: string = ''): boolean {
+    const control = this.productForm.get(fieldName);
+    if (control?.touched) {
+      return errorKind ? control.errors?.[errorKind] : !control.valid;
+    }
+    return false;
   }
 }
