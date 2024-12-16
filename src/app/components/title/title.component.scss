@@ -1,0 +1,24 @@
+h1 {
+    font-family: 'Arial', sans-serif;
+    font-size: 48px;
+    font-weight: bold;
+    color: #333; /* Gris foncé pour une bonne lisibilité */
+    text-align: center; /* Centre le texte horizontalement */
+    margin: 0; /* Supprime les marges par défaut */
+    padding: 20px 0; /* Ajoute un peu d'espace autour du texte */
+    text-transform: uppercase; /* Met le texte en majuscules pour plus d'impact */
+    letter-spacing: 3px; /* Espacement entre les lettres pour une meilleure lisibilité */
+    background-color: #f2f2f2; /* Fond léger pour contraster avec le texte */
+    border-radius: 8px; /* Coins arrondis pour un effet moderne */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Ombre légère pour ajouter du relief */
+  }
+  
+  body {
+    display: flex;
+    justify-content: center; /* Centre le contenu horizontalement */
+    align-items: center; /* Centre le contenu verticalement */
+    height: 100vh; /* Utilise toute la hauteur de la fenêtre */
+    margin: 0; /* Supprime la marge par défaut du body */
+    background-color: #fafafa; /* Fond de page clair */
+  }
+  

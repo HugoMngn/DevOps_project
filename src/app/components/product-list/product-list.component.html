@@ -1,0 +1,32 @@
+<div class="product-container">
+  <table class="product-table">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Nom</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr
+        *ngFor="let product of products; trackBy: trackByProductId"
+        (click)="onProductClic($event, product)"
+        [ngClass]="{ 'selected': product === selectedProduct }"
+      >
+        <td>{{ product.id }}</td>
+        <td>{{ product.nom }}</td>
+        <td>
+          <button (click)="viewDetails(product); $event.stopPropagation()">Details</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div *ngIf="selectedProduct" class="product-details">
+    <h3>Détails du produit</h3>
+    <p><strong>Nom :</strong> {{ selectedProduct.nom }}</p>
+    <p><strong>Texture :</strong> {{ selectedProduct.texture }}</p>
+    <p><strong>Grammage :</strong> {{ selectedProduct.grammage }}</p>
+    <p><strong>Couleur :</strong> {{ selectedProduct.couleur }}</p>
+  </div>
+</div>

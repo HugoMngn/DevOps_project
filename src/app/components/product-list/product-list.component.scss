@@ -1,0 +1,36 @@
+.selected {
+  font-weight: bold;
+  color: #0056b3;
+  background-color: #e8f4ff;
+  border-radius: 4px;
+  padding: 4px 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.product-container {
+  display: flex;
+  flex-direction: column; /* Organise les éléments verticalement */
+  align-items: center; /* Centre horizontalement les éléments */
+  gap: 20px; /* Espace entre le tableau et les détails */
+}
+
+.product-table {
+  width: 60%;
+  border-collapse: collapse;
+}
+
+.product-table th,
+.product-table td {
+  border: 1px solid #ddd;
+  padding: 8px;
+  text-align: left;
+}
+
+.product-details {
+  width: 60%; /* Garder la même largeur que le tableau pour l'uniformité */
+  padding: 16px;
+  border: 1px solid #ccc;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
