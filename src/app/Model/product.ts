@@ -1,11 +1,9 @@
-// src/app/models/product.ts
-
 export class Product {
-    id: number;  // Identifiant unique pour le produit
-    nom: string; // Nom du produit
-    texture: string; // Texture du produit
-    grammage: string; // Grammage du produit
-    couleur: string; // Couleur du produit
+    id: number;  
+    nom: string; 
+    texture: string; 
+    grammage: string; 
+    couleur: string;
   
     constructor(
       id: number = 0,

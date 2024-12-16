@@ -20,9 +20,9 @@ export class ProductFormComponent {
 
   constructor() {
     this.productForm = new FormGroup({
-      nom: new FormControl('', [Validators.required, Validators.maxLength(20)]),
-      texture: new FormControl('', [Validators.required, Validators.maxLength(10)]),
-      grammage: new FormControl('', [Validators.required, Validators.pattern(/^\d+gr$/)]),
+      nom: new FormControl('', [Validators.required, Validators.maxLength(25), Validators.pattern(/^Papier\s.*$/)]),
+      texture: new FormControl('', [Validators.required, Validators.maxLength(15)]),
+      grammage: new FormControl('', [Validators.required, Validators.pattern(/^\d+\s?gr$/)]),
       couleur: new FormControl('', Validators.required),
     });
   }
@@ -30,6 +30,27 @@ export class ProductFormComponent {
   public onNew() {
     this.selectedProduct = undefined;
     this.productForm.reset();
+  }
+
+  public showFieldError(fieldName: string, errorKind: string = ''): boolean {
+    const control = this.productForm.get(fieldName);
+    if (control?.touched) {
+      return errorKind ? control.errors?.[errorKind] : !control.valid;
+    }
+    return false;
+  }
+
+  public onSubmit() {
+    if (this.productForm.valid) {
+      const updatedProduct: Product = this.productForm.value;
+      this.saveProduct.emit(updatedProduct);
+    }
+  }
+
+  public onCancel() {
+    this.cancelEdit.emit();
+    this.productForm.reset();
+
   }
 
   public ngOnChanges(changes: SimpleChanges): void {
@@ -46,24 +67,4 @@ export class ProductFormComponent {
       }
     }
   }
-
-  public onSubmit() {
-    if (this.productForm.valid) {
-      const updatedProduct: Product = this.productForm.value;
-      this.saveProduct.emit(updatedProduct);
-    }
-  }
-
-  public onCancel() {
-    this.cancelEdit.emit();
-  }
-
-  public showFieldError(fieldName: string, errorKind: string = ''): boolean {
-    const control = this.productForm.get(fieldName);
-    if (control?.touched) {
-      return errorKind ? control.errors?.[errorKind] : !control.valid;
-    }
-    return false;
-  }
 }
-

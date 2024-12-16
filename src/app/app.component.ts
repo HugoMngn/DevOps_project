@@ -4,9 +4,6 @@ import { TitleComponent } from "./components/title/title.component";
 import { ProductListComponent } from "./components/product-list/product-list.component";
 import { ProductFormComponent } from "./components/product-form/product-form.component";
 
-
- 
-
 @Component({
   selector: 'app-root',
   standalone: true,
@@ -17,8 +14,8 @@ import { ProductFormComponent } from "./components/product-form/product-form.com
 export class AppComponent {
  
   public products: Product[] = [
-    {id:1 , nom:"Papier 1 " ,texture:"Lisse" , grammage:"80gr" , couleur:"blanc" },
-    {id:2 , nom:"Papier 2" ,texture:"Grain fin" , grammage:"120gr" , couleur:"écru" }
+    {id:1 , nom:"Papier 1" ,texture:"Granulé fin" , grammage:"90gr" , couleur:"Rouge" },
+    {id:2 , nom:"Papier 2" ,texture:"Plastifié" , grammage:"70gr" , couleur:"Doré" }
   ];
   public selectedProduct: Product | undefined;
 
@@ -30,6 +27,10 @@ export class AppComponent {
     this.selectedProduct = product;
   }
 
+  onCancelEdit() {
+    this.selectedProduct = undefined;
+  }
+  
   onSaveProduct(updatedProduct: Product) {
     if (this.selectedProduct) {
       const index = this.products.findIndex((p) => p.id === this.selectedProduct?.id);
@@ -46,10 +47,6 @@ export class AppComponent {
       }
       this.products.push(updatedProduct);
     }
-  }
-
-  onCancelEdit() {
-    this.selectedProduct = undefined;
   }
 }
 

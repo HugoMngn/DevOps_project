@@ -1,7 +1,6 @@
-/* Style global du formulaire */
 form {
     max-width: 400px;
-    margin: 20px auto; /* Centre le formulaire horizontalement */
+    margin: 20px auto; 
     padding: 20px;
     background-color: #f9f9f9;
     border: 1px solid #ddd;
@@ -9,7 +8,7 @@ form {
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   }
   
-  /* Boutons principaux */
+
   button {
     padding: 10px 20px;
     margin-top: 10px;
@@ -20,47 +19,44 @@ form {
     transition: background-color 0.3s ease;
   }
   
-  /* Bouton "New" */
+ 
   button:first-of-type {
-    background-color: #007bff; /* Bleu clair */
+    background-color: #007bff;
     color: white;
     margin-bottom: 15px;
-    display: block; /* Transforme le bouton en élément de bloc */
-    margin-left: auto; /* Centre horizontalement */
-    margin-right: auto; /* Centre horizontalement */
+    display: block; 
+    margin-left: auto; 
+    margin-right: auto; 
   }
   
   button:first-of-type:hover {
-    background-color: #0056b3; /* Bleu plus foncé */
+    background-color: #0056b3; 
   }
   
-  /* Bouton "Valider" */
   button[type="submit"] {
-    background-color: #28a745; /* Vert clair */
+    background-color: #28a745; 
     color: white;
   }
   
   button[type="submit"]:disabled {
-    background-color: #ccc; /* Gris clair quand désactivé */
+    background-color: #ccc; 
     cursor: not-allowed;
   }
   
   button[type="submit"]:hover:not(:disabled) {
-    background-color: #218838; /* Vert plus foncé */
+    background-color: #218838;
   }
   
-  /* Bouton "Annuler" */
   button[type="button"] {
-    background-color: #dc3545; /* Rouge clair */
+    background-color: #dc3545; 
     color: white;
     margin-left: 10px;
   }
   
   button[type="button"]:hover {
-    background-color: #c82333; /* Rouge plus foncé */
+    background-color: #c82333; 
   }
   
-  /* Style des labels */
   label {
     display: block;
     margin-bottom: 5px;
@@ -68,7 +64,6 @@ form {
     color: #333;
   }
   
-  /* Style des champs de saisie */
   input {
     width: 100%;
     padding: 8px;
@@ -84,15 +79,14 @@ form {
     box-shadow: 0 0 4px rgba(0, 123, 255, 0.5);
   }
   
-  /* Messages d'erreur */
   .fielderror {
-    color: #dc3545; /* Rouge */
+    color: #dc3545; 
     font-size: 12px;
-    margin: -10px 0 10px; /* Ajuste l'espacement autour des erreurs */
+    margin: -10px 0 10px; 
   }
   
   .fielderror ~ input {
-    border-color: #dc3545; /* Met en évidence le champ en erreur */
+    border-color: #dc3545; 
   }
   
   .fielderror ~ input:focus {

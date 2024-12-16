@@ -15,7 +15,6 @@ export class ProductListComponent {
   @Output() clickProduct = new EventEmitter<Product>();
 
   onProductClic(event: MouseEvent, product: Product): void {
-    // Si l'événement est déclenché par un élément autre que le bouton, alors on sélectionne le produit
     if (!(event.target instanceof HTMLButtonElement)) {
       this.clickProduct.emit(product);
       this.selectedProduct = product;

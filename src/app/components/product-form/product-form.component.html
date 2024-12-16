@@ -1,33 +1,36 @@
 <button (click)="onNew()">New</button>
 <form [formGroup]="productForm" (ngSubmit)="onSubmit()">
-    <label for="name">Nom :</label>
-    <input id="name" formControlName="name" placeholder="Papier x">
-    @if (showFieldError("name", "required")){
-      <p class="fielderror">Le champ est requis.</p>
-    } @else if (showFieldError("name")){
-      <p>20 caractère max.</p>
+    <label for="nom">Nom :</label>
+    <input id="nom" formControlName="nom" placeholder="Papier 'quelque chose'">
+    @if (showFieldError("nom", "required")){
+      <p class="fielderror">Le champ est requis chef.</p>
+    }@else if (showFieldError("nom", 'pattern')){
+      <p class="fielderror">Faut un espace entre Papier et le reste aussi...</p>
+    }
+     @else if (showFieldError("nom")){
+      <p class="fielderror">20 caractère max!</p>
     }
 
     <label for="texture">Texture :</label>
-    <input id="texture" formControlName="texture" placeholder="Granuleux">
+    <input id="texture" formControlName="texture" placeholder="Granuleux, Lisse...">
     @if (showFieldError("texture", "required")){
-      <p class="fielderror">Le champ est requis.</p>
+      <p class="fielderror">Le champ est requis chef.</p>
     } @else if (showFieldError("texture")){
-      <p>10 caractère max.</p>
+      <p class="fielderror">10 caractère max!</p>
     }
 
     <label for="grammage">Grammage :</label>
-    <input id="grammage" formControlName="grammage" placeholder="Xxgr">
+    <input id="grammage" formControlName="grammage" placeholder="XX gr">
     @if (showFieldError("grammage", "required")){
-      <p class="fielderror">Le champ est requis.</p>
+      <p class="fielderror">Le champ est requis chef.</p>
     } @else if (showFieldError("grammage", 'pattern')){
-      <p>Pas d'espace entre le chiffre et gr.</p>
+      <p class="fielderror">Faut un espace entre le chiffre et gr...</p>
     }
 
-    <label for="color">Couleur :</label>
-    <input id="color" formControlName="color" placeholder="Irisé">
+    <label for="couleur">Couleur :</label>
+    <input id="couleur" formControlName="couleur" placeholder="Blanc, Rouge, Doré...">
     @if (showFieldError("color", "required")){
-      <p class="fielderror">Le champ est requis.</p>
+      <p class="fielderror">Le champ est requis chef.</p>
     }
 
     <button type="submit" [disabled]="productForm.invalid">Valider</button>

@@ -9,9 +9,9 @@
 
 .product-container {
   display: flex;
-  flex-direction: column; /* Organise les éléments verticalement */
-  align-items: center; /* Centre horizontalement les éléments */
-  gap: 20px; /* Espace entre le tableau et les détails */
+  flex-direction: column; 
+  align-items: center; 
+  gap: 20px; 
 }
 
 .product-table {
@@ -27,7 +27,7 @@
 }
 
 .product-details {
-  width: 60%; /* Garder la même largeur que le tableau pour l'uniformité */
+  width: 60%; 
   padding: 16px;
   border: 1px solid #ccc;
   background-color: #f9f9f9;

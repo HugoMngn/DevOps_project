@@ -1,7 +1,11 @@
 <app-title [currentProduct]="selectedProduct"></app-title>
+
 <br>
 <app-product-list [products]="products" (clickProduct)="onSelectProduct($event)"></app-product-list>
+
 <br>
-<app-product-form [selectedProduct]="selectedProduct"
-(saveProduct)="onSaveProduct($event)"
-(cancelEdit)="onCancelEdit()"></app-product-form>
+<app-product-form
+  [selectedProduct]="selectedProduct"
+  (saveProduct)="onSaveProduct($event)"
+  (cancelEdit)="onCancelEdit()">
+</app-product-form>
