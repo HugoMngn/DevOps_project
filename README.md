@@ -1,4 +1,4 @@
-# B32024ANGULARCHEVALIERMANGIONE
+# B32024-ANGULAR-MANGIONE-CHEVALIER
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 18.2.6.
 
