@@ -80,7 +80,7 @@ describe('AppComponent', () => {
     component.selectedProduct = undefined;
 
     const newProduct: Product = {
-      id: 0, // l'id sera attribué dans la fonction
+      id: 0, 
       nom: 'Papier Nouveau',
       texture: 'Mat',
       grammage: '120 gr',

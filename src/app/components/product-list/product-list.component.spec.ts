@@ -23,7 +23,7 @@ describe('ProductListComponent', () => {
     component = fixture.componentInstance;
     debugElement = fixture.debugElement;
 
-    component.products = mockProducts; // Initialiser les produits simulés
+    component.products = mockProducts; 
     fixture.detectChanges();
   });
 
@@ -60,14 +60,13 @@ describe('ProductListComponent', () => {
 
     expect(component.selectedProduct).toEqual(mockProducts[0]);
 
-    // Cliquer à nouveau pour fermer les détails
     detailsButton.nativeElement.click();
     fixture.detectChanges();
     expect(component.selectedProduct).toBeNull();
   });
 
   it('should emit deleteProduct event when Delete button is clicked and confirmed', () => {
-    spyOn(window, 'confirm').and.returnValue(true); // Simuler confirmation
+    spyOn(window, 'confirm').and.returnValue(true);
     spyOn(component.deleteProduct, 'emit');
 
     const deleteButton = debugElement.query(By.css('.delete-btn'));
@@ -78,7 +77,7 @@ describe('ProductListComponent', () => {
   });
 
   it('should not emit deleteProduct event when deletion is cancelled', () => {
-    spyOn(window, 'confirm').and.returnValue(false); // Simuler annulation
+    spyOn(window, 'confirm').and.returnValue(false); 
     spyOn(component.deleteProduct, 'emit');
 
     const deleteButton = debugElement.query(By.css('.delete-btn'));
