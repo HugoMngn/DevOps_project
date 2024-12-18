@@ -12,7 +12,7 @@ import { ProductFormComponent } from "./components/product-form/product-form.com
   styleUrl: './app.component.scss'
 })
 export class AppComponent {
- 
+
   public products: Product[] = [
     {id:1 , nom:"Papier 1" ,texture:"Granulé fin" , grammage:"90 gr" , couleur:"Rouge" },
     {id:2 , nom:"Papier 2" ,texture:"Plastifié" , grammage:"70 gr" , couleur:"Doré" }
@@ -30,16 +30,15 @@ export class AppComponent {
   onCancelEdit() {
     this.selectedProduct = undefined;
   }
-  
+
   onDeleteProduct(product: Product): void {
-    this.products = this.products.filter(p => p.id !== product.id); 
+    this.products = this.products.filter(p => p.id !== product.id);
   }
 
   onSaveProduct(updatedProduct: Product) {
-    if (this.selectedProduct) {
-      const index = this.products.findIndex((p) => p.id === this.selectedProduct?.id);
+    if (updatedProduct.id != null) {
+      const index = this.products.findIndex((p) => p.id === updatedProduct.id);
       if (index !== -1) {
-        updatedProduct.id = this.selectedProduct.id;
         this.products[index] = updatedProduct;
       }
     } else {

@@ -17,10 +17,11 @@ export class ProductFormComponent {
   @Output() cancelEdit = new EventEmitter<void>();
 
   productForm: FormGroup;
-  isNewProduct: boolean = false; 
+  isNewProduct: boolean = false;
 
   constructor() {
     this.productForm = new FormGroup({
+      id: new FormControl(),
       nom: new FormControl('', [Validators.required, Validators.maxLength(25), Validators.pattern(/^Papier\s.*$/)]),
       texture: new FormControl('', [Validators.required, Validators.maxLength(15)]),
       grammage: new FormControl('', [Validators.required, Validators.pattern(/^\d+\s?gr$/)]),
@@ -28,10 +29,10 @@ export class ProductFormComponent {
     });
   }
 
-  
+
   public onNew() {
     this.selectedProduct = undefined;
-    this.isNewProduct = true; 
+    this.isNewProduct = true;
     this.productForm.reset();
   }
 
@@ -44,6 +45,7 @@ export class ProductFormComponent {
 
   public onSubmit() {
     if (this.productForm.valid) {
+      debugger;
       const updatedProduct: Product = this.productForm.value;
       this.saveProduct.emit(updatedProduct);
     }
@@ -52,13 +54,10 @@ export class ProductFormComponent {
   public ngOnChanges(changes: SimpleChanges): void {
     if (changes['selectedProduct']) {
       if (this.selectedProduct) {
-        this.isNewProduct = false; 
-        this.productForm.setValue({
-          nom: this.selectedProduct.nom,
-          texture: this.selectedProduct.texture,
-          grammage: this.selectedProduct.grammage,
-          couleur: this.selectedProduct.couleur,
-        });
+        this.isNewProduct = false;
+        this.productForm.setValue(
+          this.selectedProduct
+          );
       } else {
         this.productForm.reset();
       }
