@@ -10,5 +10,8 @@ import { Product } from '../../Model/product';
   styleUrls: ['./title.component.scss']
 })
 export class TitleComponent {
+
+  title: string = 'Rock & Paper ®';
+
   @Input() currentProduct: Product | undefined;
 }

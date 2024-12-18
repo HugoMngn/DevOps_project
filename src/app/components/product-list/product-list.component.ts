@@ -27,7 +27,6 @@ export class ProductListComponent {
   }
 
   toggleDetails(product: Product): void {
-    // Si le produit sélectionné est déjà celui des détails, on le retire
     if (this.selectedProduct === product) {
       this.selectedProduct = null;
     } else {
