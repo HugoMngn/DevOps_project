@@ -10,8 +10,13 @@ namespace Paper.Api.Controllers
     {
         private static List<Product> ProductList = new()
         {
+<<<<<<< HEAD
             new Product { Id = 1, Nom = "Papier 3", Texture = "Granuleux", Grammage = "1 gr", Couleur = "rouge" },
             new Product { Id = 2, Nom = "Papier 4", Texture = "Doux", Grammage = "10 gr", Couleur = "doré" },
+=======
+            new Product { Id = 1, Nom = "Polo", Texture = "Jean", Grammage="1 gr", Couleur = "rouge"},
+            new Product { Id = 2, Nom = "Sampras", Texture = "Pierre", Grammage ="10 gr", Couleur = "doré"},
+>>>>>>> d2171f7f760d19feafe536895055f92d91041bb7
         };
 
         private static int MaxId = 2;
