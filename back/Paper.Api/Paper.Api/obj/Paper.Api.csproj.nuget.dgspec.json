@@ -1,7 +1,6 @@
 {
   "format": 1,
   "restore": {
-<<<<<<< HEAD
     "C:\\Users\\Utilisateur\\Documents\\GitHub\\B32024-Angular-Mangione-Chevalier\\back\\Paper.Api\\Paper.Api\\Paper.Api.csproj": {}
   },
   "projects": {
@@ -16,22 +15,6 @@
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Utilisateur\\AppData\\Roaming\\NuGet\\NuGet.Config",
-=======
-    "C:\\Theotim\\EPSI\\Angular_typscript_js\\B32024-Angular-Mangione-Chevalier\\back\\Paper.Api\\Paper.Api\\Paper.Api.csproj": {}
-  },
-  "projects": {
-    "C:\\Theotim\\EPSI\\Angular_typscript_js\\B32024-Angular-Mangione-Chevalier\\back\\Paper.Api\\Paper.Api\\Paper.Api.csproj": {
-      "version": "1.0.0",
-      "restore": {
-        "projectUniqueName": "C:\\Theotim\\EPSI\\Angular_typscript_js\\B32024-Angular-Mangione-Chevalier\\back\\Paper.Api\\Paper.Api\\Paper.Api.csproj",
-        "projectName": "Paper.Api",
-        "projectPath": "C:\\Theotim\\EPSI\\Angular_typscript_js\\B32024-Angular-Mangione-Chevalier\\back\\Paper.Api\\Paper.Api\\Paper.Api.csproj",
-        "packagesPath": "C:\\Users\\Me\\.nuget\\packages\\",
-        "outputPath": "C:\\Theotim\\EPSI\\Angular_typscript_js\\B32024-Angular-Mangione-Chevalier\\back\\Paper.Api\\Paper.Api\\obj\\",
-        "projectStyle": "PackageReference",
-        "configFilePaths": [
-          "C:\\Users\\Me\\AppData\\Roaming\\NuGet\\NuGet.Config",
->>>>>>> d2171f7f760d19feafe536895055f92d91041bb7
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
