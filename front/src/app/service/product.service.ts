@@ -18,7 +18,6 @@ export class ProductService {
 
   // POST: Ajouter un produit
   public create(product: Product): Observable<any> {
-    // Supprimer l'ID avant d'envoyer la requête
     const { id, ...productWithoutId } = product;
     return this._httpClient.post(this.apiUrl, productWithoutId);
   }

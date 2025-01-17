@@ -12,9 +12,7 @@ namespace Paper.Api.Controllers
         {
             new Product { Id = 1, Nom = "Papier 3", Texture = "Granuleux", Grammage = "1 gr", Couleur = "rouge" },
             new Product { Id = 2, Nom = "Papier 4", Texture = "Doux", Grammage = "10 gr", Couleur = "doré" },
-            new Product { Id = 1, Nom = "Polo", Texture = "Jean", Grammage="1 gr", Couleur = "rouge"},
-            new Product { Id = 2, Nom = "Sampras", Texture = "Pierre", Grammage ="10 gr", Couleur = "doré"},
-        };
+           };
 
         private static int MaxId = 2;
 
