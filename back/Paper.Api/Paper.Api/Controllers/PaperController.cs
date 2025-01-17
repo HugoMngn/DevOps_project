@@ -11,8 +11,8 @@ namespace Paper.Api.Controllers
 
         private static List<Product> ProductList = new()
         {
-            new Product { Id = 1, nom = "Polo", texture = "Jean", grammage="1 gr", couleur = "rouge"},
-            new Product { Id = 2, nom = "Sampras", texture = "Pierre", grammage ="10 gr", couleur = "doré"},
+            new Product { Id = 1, Nom = "Polo", Texture = "Jean", Grammage="1 gr", Couleur = "rouge"},
+            new Product { Id = 2, Nom = "Sampras", Texture = "Pierre", Grammage ="10 gr", Couleur = "doré"},
         };
         private static int MaxId = 2;
         [HttpGet()]

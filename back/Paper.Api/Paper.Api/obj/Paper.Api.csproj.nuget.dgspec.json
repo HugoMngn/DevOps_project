@@ -1,25 +1,27 @@
 {
   "format": 1,
   "restore": {
-    "/Users/florentbaccard/Documents/B32024-Angular-Mangione-Chevalier/back/Paper.Api/Paper.Api/Paper.Api.csproj": {}
+    "C:\\Theotim\\EPSI\\Angular_typscript_js\\B32024-Angular-Mangione-Chevalier\\back\\Paper.Api\\Paper.Api\\Paper.Api.csproj": {}
   },
   "projects": {
-    "/Users/florentbaccard/Documents/B32024-Angular-Mangione-Chevalier/back/Paper.Api/Paper.Api/Paper.Api.csproj": {
+    "C:\\Theotim\\EPSI\\Angular_typscript_js\\B32024-Angular-Mangione-Chevalier\\back\\Paper.Api\\Paper.Api\\Paper.Api.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/Users/florentbaccard/Documents/B32024-Angular-Mangione-Chevalier/back/Paper.Api/Paper.Api/Paper.Api.csproj",
+        "projectUniqueName": "C:\\Theotim\\EPSI\\Angular_typscript_js\\B32024-Angular-Mangione-Chevalier\\back\\Paper.Api\\Paper.Api\\Paper.Api.csproj",
         "projectName": "Paper.Api",
-        "projectPath": "/Users/florentbaccard/Documents/B32024-Angular-Mangione-Chevalier/back/Paper.Api/Paper.Api/Paper.Api.csproj",
-        "packagesPath": "/Users/florentbaccard/.nuget/packages/",
-        "outputPath": "/Users/florentbaccard/Documents/B32024-Angular-Mangione-Chevalier/back/Paper.Api/Paper.Api/obj/",
+        "projectPath": "C:\\Theotim\\EPSI\\Angular_typscript_js\\B32024-Angular-Mangione-Chevalier\\back\\Paper.Api\\Paper.Api\\Paper.Api.csproj",
+        "packagesPath": "C:\\Users\\Me\\.nuget\\packages\\",
+        "outputPath": "C:\\Theotim\\EPSI\\Angular_typscript_js\\B32024-Angular-Mangione-Chevalier\\back\\Paper.Api\\Paper.Api\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "/Users/florentbaccard/.nuget/NuGet/NuGet.Config"
+          "C:\\Users\\Me\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
           "net8.0"
         ],
         "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -67,7 +69,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "/Users/florentbaccard/.dotnet/sdk/8.0.404/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.200/PortableRuntimeIdentifierGraph.json"
         }
       }
     }
