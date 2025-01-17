@@ -3,6 +3,7 @@ import { Product } from './Model/product';
 import { TitleComponent } from "./components/title/title.component";
 import { ProductListComponent } from "./components/product-list/product-list.component";
 import { ProductFormComponent } from "./components/product-form/product-form.component";
+import { BehaviorSubject, Subject, switchMap, tap } from 'rxjs';
 
 @Component({
   selector: 'app-root',
@@ -12,6 +13,25 @@ import { ProductFormComponent } from "./components/product-form/product-form.com
   styleUrl: './app.component.scss'
 })
 export class AppComponent {
+
+  private _myRefreshObservable  = new BehaviorSubject<number>(1);
+
+  constructor(private _tennisPlayerService: TennisPlayersService){
+
+    this._myRefreshObservable
+      .pipe(
+        switchMap(()=> {
+          return this._tennisPlayerService.get();
+        }),
+      ).subscribe((value)=>{
+        this._playerList = value
+    });
+  }
+
+    onRefreshList() {
+    this._myRefreshObservable.next(1);
+  }
+
 
   public products: Product[] = [
     {id:1 , nom:"Papier 1" ,texture:"Granulé fin" , grammage:"90 gr" , couleur:"Rouge" },
