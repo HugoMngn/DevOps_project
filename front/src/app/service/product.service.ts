@@ -1,24 +1,35 @@
 import { Injectable } from '@angular/core';
-import { Product} from '../Model/product';
+import { Product } from '../Model/product';
 import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
 })
 export class ProductService {
+  private readonly apiUrl = '/api/Product';
 
-  public constructor(private _httpClient: HttpClient){
+  public constructor(private _httpClient: HttpClient) { }
+
+  // GET: Récupérer tous les produits
+  public get(): Observable<Product[]> {
+    return this._httpClient.get<Product[]>(this.apiUrl);
   }
 
-  public get(){
-    return this._httpClient.get<Product[]>('/api/Product');
+  // POST: Ajouter un produit
+  public create(product: Product): Observable<any> {
+    // Supprimer l'ID avant d'envoyer la requête
+    const { id, ...productWithoutId } = product;
+    return this._httpClient.post(this.apiUrl, productWithoutId);
   }
 
-  public add(Product: Product){
-    return this._httpClient.post('/api/Product', Product);
+  // PUT: Mettre à jour un produit
+  public update(product: Product): Observable<any> {
+    return this._httpClient.put(`${this.apiUrl}/${product.id}`, product);
   }
 
-  public put(Product: Product){
-    return this._httpClient.put('/api/Product/' + Product.id, Product);
+  // DELETE: Supprimer un produit
+  public delete(id: number): Observable<any> {
+    return this._httpClient.delete(`${this.apiUrl}/${id}`);
   }
 }

@@ -36,7 +36,7 @@ export class ProductFormComponent {
     this.productForm.reset();
   }
 
-   public onCancel() {
+  public onCancel() {
     this.cancelEdit.emit();
     this.isNewProduct = false;
     this.productForm.reset();
@@ -45,7 +45,6 @@ export class ProductFormComponent {
 
   public onSubmit() {
     if (this.productForm.valid) {
-      debugger;
       const updatedProduct: Product = this.productForm.value;
       this.saveProduct.emit(updatedProduct);
     }
@@ -57,7 +56,7 @@ export class ProductFormComponent {
         this.isNewProduct = false;
         this.productForm.setValue(
           this.selectedProduct
-          );
+        );
       } else {
         this.productForm.reset();
       }

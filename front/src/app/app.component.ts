@@ -1,76 +1,63 @@
 import { Component } from '@angular/core';
 import { Product } from './Model/product';
-import { TitleComponent } from "./components/title/title.component";
-import { ProductListComponent } from "./components/product-list/product-list.component";
-import { ProductFormComponent } from "./components/product-form/product-form.component";
-import { BehaviorSubject, Subject, switchMap, tap } from 'rxjs';
-import { ProductService} from './service/product.service';
+import { ProductService } from './service/product.service';
+import { BehaviorSubject, switchMap } from 'rxjs';
+import { CommonModule } from '@angular/common';
+import { TitleComponent } from './components/title/title.component';
+import { ProductListComponent } from './components/product-list/product-list.component';
+import { ProductFormComponent } from './components/product-form/product-form.component';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [TitleComponent, ProductListComponent, ProductFormComponent],
   templateUrl: './app.component.html',
-  styleUrl: './app.component.scss'
+  styleUrls: ['./app.component.scss'],
+  imports: [CommonModule, TitleComponent, ProductListComponent, ProductFormComponent]
 })
 export class AppComponent {
-
-  private _myRefreshObservable  = new BehaviorSubject<number>(1);
-
-  constructor(private _ProductService: ProductService){
-
-    this._myRefreshObservable
-      .pipe(
-        switchMap(()=> {
-          return this._ProductService.get();
-        }),
-      ).subscribe((value)=>{
-        this.products = value
-    });
-  }
-
-    onRefreshList() {
-    this._myRefreshObservable.next(1);
-  }
-
-
-  public products: Product[] = [
-    {id:1 , nom:"Papier 1" ,texture:"Granulé fin" , grammage:"90 gr" , couleur:"Rouge" },
-    {id:2 , nom:"Papier 2" ,texture:"Plastifié" , grammage:"70 gr" , couleur:"Doré" }
-  ];
+  public products: Product[] = [];
   public selectedProduct: Product | undefined;
 
-  onSelectProduct($event: Product) {
-    this.selectedProduct = $event;
+  private _refreshTrigger = new BehaviorSubject<void>(undefined);
+
+  constructor(private productService: ProductService) {
+    // Charger les produits initialement et à chaque refresh
+    this._refreshTrigger
+      .pipe(switchMap(() => this.productService.get()))
+      .subscribe((products) => (this.products = products));
   }
 
-  onProductSelected(product: Product) {
+  // Déclencher un rafraîchissement
+  onRefreshList(): void {
+    this._refreshTrigger.next();
+  }
+
+  // Sélectionner un produit pour modification
+  onSelectProduct(product: Product): void {
     this.selectedProduct = product;
   }
 
-  onCancelEdit() {
+  // Annuler la sélection
+  onCancelEdit(): void {
     this.selectedProduct = undefined;
   }
 
-  onDeleteProduct(product: Product): void {
-    this.products = this.products.filter(p => p.id !== product.id);
+  // Ajouter ou modifier un produit
+  onSaveProduct(product: Product): void {
+    if (product.id) {
+      // Modifier le produit
+      this.productService.update(product).subscribe(() => this.onRefreshList());
+    } else {
+      // Ajouter un nouveau produit
+      this.productService.create(product).subscribe(() => this.onRefreshList());
+    }
+    this.selectedProduct = undefined;
   }
 
-  onSaveProduct(updatedProduct: Product) {
-    if (updatedProduct.id != null) {
-      const index = this.products.findIndex((p) => p.id === updatedProduct.id);
-      if (index !== -1) {
-        this.products[index] = updatedProduct;
-      }
-    } else {
-      if (this.products.length > 0) {
-        const lastProductId = this.products[this.products.length - 1].id;
-        updatedProduct.id = lastProductId + 1;
-      } else {
-        updatedProduct.id = 1;
-      }
-      this.products.push(updatedProduct);
+  // Supprimer un produit
+  onDeleteProduct(product: Product): void {
+    if (product.id) {
+      this.productService.delete(product.id).subscribe(() => this.onRefreshList());
     }
   }
 }
-

@@ -1,15 +1,15 @@
 [
   {
-    "ContainingType": "Paper.Api.Controllers.PlayerController",
+    "ContainingType": "Paper.Api.Controllers.ProductService",
     "Method": "Get",
-    "RelativePath": "api/player",
+    "RelativePath": "api/Product",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
     "Parameters": [],
     "ReturnTypes": [
       {
-        "Type": "System.Collections.Generic.List\u00601[[Paper.Api.Models.Player, Paper.Api, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "Type": "System.Collections.Generic.List\u00601[[Paper.Api.Models.Product, Paper.Api, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
         "MediaTypes": [
           "text/plain",
           "application/json",
@@ -20,25 +20,25 @@
     ]
   },
   {
-    "ContainingType": "Paper.Api.Controllers.PlayerController",
+    "ContainingType": "Paper.Api.Controllers.ProductService",
     "Method": "Post",
-    "RelativePath": "api/player",
+    "RelativePath": "api/Product",
     "HttpMethod": "POST",
     "IsController": true,
     "Order": 0,
     "Parameters": [
       {
-        "Name": "player",
-        "Type": "Paper.Api.Models.Player",
+        "Name": "product",
+        "Type": "Paper.Api.Models.Product",
         "IsRequired": true
       }
     ],
     "ReturnTypes": []
   },
   {
-    "ContainingType": "Paper.Api.Controllers.PlayerController",
-    "Method": "Get",
-    "RelativePath": "api/player/{id}",
+    "ContainingType": "Paper.Api.Controllers.ProductService",
+    "Method": "GetById",
+    "RelativePath": "api/Product/{id}",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
@@ -51,7 +51,7 @@
     ],
     "ReturnTypes": [
       {
-        "Type": "Paper.Api.Models.Player",
+        "Type": "Paper.Api.Models.Product",
         "MediaTypes": [
           "text/plain",
           "application/json",
@@ -62,35 +62,41 @@
     ]
   },
   {
-    "ContainingType": "Paper.Api.Controllers.PlayerController",
+    "ContainingType": "Paper.Api.Controllers.ProductService",
     "Method": "Put",
-    "RelativePath": "api/player/{id}",
+    "RelativePath": "api/Product/{id}",
     "HttpMethod": "PUT",
     "IsController": true,
     "Order": 0,
     "Parameters": [
       {
-        "Name": "player",
-        "Type": "Paper.Api.Models.Player",
+        "Name": "id",
+        "Type": "System.Int32",
         "IsRequired": true
       },
+      {
+        "Name": "updatedProduct",
+        "Type": "Paper.Api.Models.Product",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Paper.Api.Controllers.ProductService",
+    "Method": "Delete",
+    "RelativePath": "api/Product/{id}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
       {
         "Name": "id",
         "Type": "System.Int32",
         "IsRequired": true
       }
     ],
-    "ReturnTypes": [
-      {
-        "Type": "Paper.Api.Models.Player",
-        "MediaTypes": [
-          "text/plain",
-          "application/json",
-          "text/json"
-        ],
-        "StatusCode": 200
-      }
-    ]
+    "ReturnTypes": []
   },
   {
     "ContainingType": "Paper.Api.Controllers.WeatherForecastController",
