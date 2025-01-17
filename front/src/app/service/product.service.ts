@@ -11,14 +11,14 @@ export class ProductService {
   }
 
   public get(){
-    return this._httpClient.get<Product[]>('/api/product');
+    return this._httpClient.get<Product[]>('/api/Product');
   }
 
   public add(Product: Product){
-    return this._httpClient.post('/api/product', Product);
+    return this._httpClient.post('/api/Product', Product);
   }
 
   public put(Product: Product){
-    return this._httpClient.put('/api/product/' + Product.id, Product);
+    return this._httpClient.put('/api/Product/' + Product.id, Product);
   }
 }
