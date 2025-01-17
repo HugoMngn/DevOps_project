@@ -4,6 +4,7 @@ import { TitleComponent } from "./components/title/title.component";
 import { ProductListComponent } from "./components/product-list/product-list.component";
 import { ProductFormComponent } from "./components/product-form/product-form.component";
 import { BehaviorSubject, Subject, switchMap, tap } from 'rxjs';
+import { ProductService} from './service/product.service';
 
 @Component({
   selector: 'app-root',
@@ -16,15 +17,15 @@ export class AppComponent {
 
   private _myRefreshObservable  = new BehaviorSubject<number>(1);
 
-  constructor(private _tennisPlayerService: TennisPlayersService){
+  constructor(private _ProductService: ProductService){
 
     this._myRefreshObservable
       .pipe(
         switchMap(()=> {
-          return this._tennisPlayerService.get();
+          return this._ProductService.get();
         }),
       ).subscribe((value)=>{
-        this._playerList = value
+        this.products = value
     });
   }
 
