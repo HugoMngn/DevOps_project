@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Paper.Api")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+5f951aa6aa2cd5edbcb8c077d5f1bb0e23220bcb")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+4e2df9b86a6bbdebdcd88ca21a4955e36a37fb2c")]
 [assembly: System.Reflection.AssemblyProductAttribute("Paper.Api")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Paper.Api")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

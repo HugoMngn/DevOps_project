@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "Kmh0YUHe2FuWrnSxCIHZPa9yTh+6KqtY0lCGUd8C/5QlKKx6iFmOJUJxdi2qLVV0gjMTAMb/0W/SaRS2D7Ue0A==",
+  "success": true,
+  "projectFilePath": "C:\\Theotim\\EPSI\\Angular_typscript_js\\B32024-Angular-Mangione-Chevalier\\back\\WebApplication1\\WebApplication1\\WebApplication1.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\Me\\.nuget\\packages\\microsoft.visualstudio.azure.containers.tools.targets\\1.19.6\\microsoft.visualstudio.azure.containers.tools.targets.1.19.6.nupkg.sha512"
+  ],
+  "logs": []
+}
