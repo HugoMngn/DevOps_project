@@ -2,12 +2,14 @@ import { Component, EventEmitter, Input, OnChanges, Output, SimpleChanges } from
 import { CommonModule } from '@angular/common';
 import { FormControl, FormGroup, ReactiveFormsModule, RequiredValidator, Validators } from '@angular/forms';
 import { Product } from '../../Model/product';
+import { OidcSecurityService } from 'angular-auth-oidc-client';
+import { AuthModule } from 'angular-auth-oidc-client';
 
 
 @Component({
   selector: 'app-product-form',
   standalone: true,
-  imports: [CommonModule, ReactiveFormsModule],
+  imports: [CommonModule, ReactiveFormsModule, AuthModule,],
   templateUrl: './product-form.component.html',
   styleUrls: ['./product-form.component.scss'],
 })
@@ -18,8 +20,9 @@ export class ProductFormComponent {
 
   productForm: FormGroup;
   isNewProduct: boolean = false;
+  userName: string | null = null;
 
-  constructor() {
+  constructor(private oidcSecurityService: OidcSecurityService) {
     this.productForm = new FormGroup({
       id: new FormControl(),
       nom: new FormControl('', [Validators.required, Validators.maxLength(25), Validators.pattern(/^Papier\s.*$/)]),
@@ -29,6 +32,21 @@ export class ProductFormComponent {
     });
   }
 
+  ngOnInit(): void {
+    this.oidcSecurityService.checkAuth().subscribe(({ isAuthenticated, userData }) => {
+      if (isAuthenticated) {
+        this.userName = userData?.preferred_username || userData?.name;
+      }
+    });
+  }
+
+  login() {
+    this.oidcSecurityService.authorize();
+  }
+
+  logout() {
+    this.oidcSecurityService.logoff();
+  }
 
   public onNew() {
     this.selectedProduct = undefined;

@@ -1,7 +1,4 @@
 <app-title [currentProduct]="selectedProduct"></app-title>
-<button *ngIf="!userName" (click)="login()">Login</button>
-<button *ngIf="userName" (click)="logout()">Logout</button>
-<p *ngIf="userName">Bienvenue, {{ userName }} !</p>
 
 <br>
 <app-product-list [products]="products" (clickProduct)="onSelectProduct($event)"

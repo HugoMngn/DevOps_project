@@ -25,6 +25,7 @@ services:
     depends_on:
       - frontend
       - backend
+      - keycloak
     networks:
       - app-network
 

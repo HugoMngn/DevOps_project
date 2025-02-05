@@ -1,3 +1,7 @@
+<button *ngIf="!userName" (click)="login()">Login</button>
+<button *ngIf="userName" (click)="logout()">Logout</button>
+<p *ngIf="userName">Bienvenue, {{ userName }} !</p>
+
 <button (click)="onNew()">Ajouter</button>
 <h4 *ngIf="selectedProduct || isNewProduct">Modification ou Ajout de produit:</h4>
 
@@ -5,7 +9,8 @@
     <label for="nom">Nom :</label>
     <input id="nom" formControlName="nom" placeholder="Papier 'quelque chose'">
     <p *ngIf="showFieldError('nom', 'required')" class="fielderror">Le champ est requis chef.</p>
-    <p *ngIf="showFieldError('nom', 'pattern')" class="fielderror">Faut un espace entre 'Papier' et le reste aussi...</p>
+    <p *ngIf="showFieldError('nom', 'pattern')" class="fielderror">Faut un espace entre 'Papier' et le reste aussi...
+    </p>
     <p *ngIf="showFieldError('nom')" class="fielderror">25 caractère max!</p>
 
     <label for="texture">Texture :</label>
