@@ -45,7 +45,9 @@ export class ProductFormComponent {
   }
 
   logout() {
-    this.oidcSecurityService.logoff();
+    this.oidcSecurityService.logoffAndRevokeTokens().subscribe(() => {
+      window.location.href = 'http://localhost:8085/realms/paper/protocol/openid-connect/logout?redirect_uri=' + window.location.origin;
+    });
   }
 
   public onNew() {
