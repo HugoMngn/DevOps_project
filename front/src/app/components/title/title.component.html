@@ -1,1 +1,4 @@
 <h1>{{ title }}</h1>
+<button *ngIf="!userName" (click)="login()">Login</button>
+<button *ngIf="userName" (click)="logout()">Logout</button>
+<p *ngIf="userName">Bienvenue, {{ userName }} !</p>
