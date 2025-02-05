@@ -4,6 +4,7 @@ WORKDIR /app
 COPY . .
 RUN npm install
 RUN npm run build --source-map
+
 # deploy
 FROM nginx
 EXPOSE 80

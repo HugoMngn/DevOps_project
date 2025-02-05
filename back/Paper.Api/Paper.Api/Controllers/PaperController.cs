@@ -11,7 +11,7 @@ namespace Paper.Api.Controllers
         private static List<Product> ProductList = new()
         {
             new Product { Id = 1, Nom = "Papier 3", Texture = "Granuleux", Grammage = "1 gr", Couleur = "rouge" },
-            new Product { Id = 2, Nom = "Papier 4", Texture = "Doux", Grammage = "10 gr", Couleur = "doré" },
+            new Product { Id = 2, Nom = "Papier 5", Texture = "Doux", Grammage = "10 gr", Couleur = "doré" },
            };
 
         private static int MaxId = 2;
