@@ -1,0 +1,9 @@
+services:
+  api:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+    ports:
+      - "9081:8080"

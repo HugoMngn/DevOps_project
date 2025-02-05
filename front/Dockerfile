@@ -8,4 +8,4 @@ RUN npm run build --source-map
 FROM nginx
 EXPOSE 80
 COPY ./docker/default.conf /etc/nginx/conf.d/default.conf
-COPY --from=build /app/dist/tennis-player/browser/ /usr/share/nginx/html
+COPY --from=build /app/dist/b32024-angular-chevalier-mangione/browser/ /usr/share/nginx/html
