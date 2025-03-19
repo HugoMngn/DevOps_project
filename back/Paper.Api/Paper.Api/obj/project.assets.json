@@ -433,11 +433,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Utilisateur\\Documents\\GitHub\\B32024-Angular-Mangione-Chevalier\\back\\Paper.Api\\Paper.Api\\Paper.Api.csproj",
+      "projectUniqueName": "C:\\Users\\Utilisateur\\Documents\\GitHub\\DevOps_project\\back\\Paper.Api\\Paper.Api\\Paper.Api.csproj",
       "projectName": "Paper.Api",
-      "projectPath": "C:\\Users\\Utilisateur\\Documents\\GitHub\\B32024-Angular-Mangione-Chevalier\\back\\Paper.Api\\Paper.Api\\Paper.Api.csproj",
+      "projectPath": "C:\\Users\\Utilisateur\\Documents\\GitHub\\DevOps_project\\back\\Paper.Api\\Paper.Api\\Paper.Api.csproj",
       "packagesPath": "C:\\Users\\Utilisateur\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Utilisateur\\Documents\\GitHub\\B32024-Angular-Mangione-Chevalier\\back\\Paper.Api\\Paper.Api\\obj\\",
+      "outputPath": "C:\\Users\\Utilisateur\\Documents\\GitHub\\DevOps_project\\back\\Paper.Api\\Paper.Api\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\Utilisateur\\AppData\\Roaming\\NuGet\\NuGet.Config",

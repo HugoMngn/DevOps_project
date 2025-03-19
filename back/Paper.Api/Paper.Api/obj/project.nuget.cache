@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "HqC/wpnsVd87DM4XCl6QvOFLQr2M2nqFolUT1zJIgXGT2K/EEa8AyyJ5qwD3piSLcfvtdeiphE2vhOBGZLuNLw==",
+  "dgSpecHash": "6N8l15PS3wlVs8/cQKrRi2lVd+HbWRjw+H7kmxKbMqektWl97YSRbs/70ELFHX1SUYcsmNrPweInmxgzQwTVIQ==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Utilisateur\\Documents\\GitHub\\B32024-Angular-Mangione-Chevalier\\back\\Paper.Api\\Paper.Api\\Paper.Api.csproj",
+  "projectFilePath": "C:\\Users\\Utilisateur\\Documents\\GitHub\\DevOps_project\\back\\Paper.Api\\Paper.Api\\Paper.Api.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Utilisateur\\.nuget\\packages\\microsoft.extensions.apidescription.server\\6.0.5\\microsoft.extensions.apidescription.server.6.0.5.nupkg.sha512",
     "C:\\Users\\Utilisateur\\.nuget\\packages\\microsoft.openapi\\1.2.3\\microsoft.openapi.1.2.3.nupkg.sha512",
