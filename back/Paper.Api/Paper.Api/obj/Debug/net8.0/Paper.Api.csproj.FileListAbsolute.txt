@@ -110,3 +110,4 @@ C:\Users\Utilisateur\Documents\GitHub\DevOps_project\back\Paper.Api\Paper.Api\ob
 C:\Users\Utilisateur\Documents\GitHub\DevOps_project\back\Paper.Api\Paper.Api\obj\Debug\net8.0\Paper.Api.csproj.Up2Date
 C:\Users\Utilisateur\Documents\GitHub\DevOps_project\back\Paper.Api\Paper.Api\obj\Debug\net8.0\Paper.Api.genruntimeconfig.cache
 C:\Users\Utilisateur\Documents\GitHub\DevOps_project\back\Paper.Api\Paper.Api\obj\Debug\net8.0\ref\Paper.Api.dll
+C:\Users\Utilisateur\Documents\GitHub\DevOps_project\back\Paper.Api\Paper.Api\bin\Debug\net8.0\Microsoft.Extensions.Configuration.Abstractions.dll
