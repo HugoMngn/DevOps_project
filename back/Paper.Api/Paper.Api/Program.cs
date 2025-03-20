@@ -1,3 +1,6 @@
+using Microsoft.EntityFrameworkCore;
+using Paper.Api.Data; // Assurez-vous que cette ligne est présente
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
@@ -6,6 +9,12 @@ builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+
+// Configuration de la chaîne de connexion à MySQL
+builder.Services.AddDbContext<PaperContext>(options =>
+    options.UseMySql(builder.Configuration.GetConnectionString("DefaultConnection"),
+    new MySqlServerVersion(new Version(8, 0, 21))));
+
 
 var app = builder.Build();
 

@@ -1,6 +1,6 @@
 [
   {
-    "ContainingType": "Paper.Api.Controllers.ProductService",
+    "ContainingType": "Paper.Api.Controllers.ProductController",
     "Method": "Get",
     "RelativePath": "api/Product",
     "HttpMethod": "GET",
@@ -20,7 +20,7 @@
     ]
   },
   {
-    "ContainingType": "Paper.Api.Controllers.ProductService",
+    "ContainingType": "Paper.Api.Controllers.ProductController",
     "Method": "Post",
     "RelativePath": "api/Product",
     "HttpMethod": "POST",
@@ -33,10 +33,20 @@
         "IsRequired": true
       }
     ],
-    "ReturnTypes": []
+    "ReturnTypes": [
+      {
+        "Type": "Paper.Api.Models.Product",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
   },
   {
-    "ContainingType": "Paper.Api.Controllers.ProductService",
+    "ContainingType": "Paper.Api.Controllers.ProductController",
     "Method": "GetById",
     "RelativePath": "api/Product/{id}",
     "HttpMethod": "GET",
@@ -62,7 +72,7 @@
     ]
   },
   {
-    "ContainingType": "Paper.Api.Controllers.ProductService",
+    "ContainingType": "Paper.Api.Controllers.ProductController",
     "Method": "Put",
     "RelativePath": "api/Product/{id}",
     "HttpMethod": "PUT",
@@ -83,7 +93,7 @@
     "ReturnTypes": []
   },
   {
-    "ContainingType": "Paper.Api.Controllers.ProductService",
+    "ContainingType": "Paper.Api.Controllers.ProductController",
     "Method": "Delete",
     "RelativePath": "api/Product/{id}",
     "HttpMethod": "DELETE",

@@ -1,33 +1,35 @@
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
+using Paper.Api.Data;
 using Paper.Api.Models;
+using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace Paper.Api.Controllers
 {
     [Route("api/Product")]
     [ApiController]
-    public class ProductService : ControllerBase
+    public class ProductController : ControllerBase
     {
-        private static List<Product> ProductList = new()
-        {
-            new Product { Id = 1, Nom = "Papier 3", Texture = "Granuleux", Grammage = "1 gr", Couleur = "rouge" },
-            new Product { Id = 2, Nom = "Papier 5", Texture = "Doux", Grammage = "10 gr", Couleur = "doré" },
-           };
+        private readonly PaperContext _context;
 
-        private static int MaxId = 2;
+        public ProductController(PaperContext context)
+        {
+            _context = context;
+        }
 
         // GET: api/Product
         [HttpGet]
-        public ActionResult<List<Product>> Get()
+        public async Task<ActionResult<List<Product>>> Get()
         {
-            return Ok(ProductList);
+            return await _context.Products.ToListAsync();
         }
 
         // GET: api/Product/{id}
         [HttpGet("{id:int}")]
-        public ActionResult<Product> GetById(int id)
+        public async Task<ActionResult<Product>> GetById(int id)
         {
-            var product = ProductList.FirstOrDefault(p => p.Id == id);
+            var product = await _context.Products.FindAsync(id);
             if (product == null)
             {
                 return NotFound(new { Message = $"Le produit avec l'ID {id} n'existe pas." });
@@ -37,49 +39,68 @@ namespace Paper.Api.Controllers
 
         // POST: api/Product
         [HttpPost]
-        public ActionResult Post([FromBody] Product product)
+        public async Task<ActionResult<Product>> Post([FromBody] Product product)
         {
             if (product == null || string.IsNullOrEmpty(product.Nom))
             {
                 return BadRequest(new { Message = "Les informations du produit sont invalides." });
             }
 
-            MaxId++;
-            product.Id = MaxId;
-            ProductList.Add(product);
-            return Created($"api/Product/{product.Id}", new { Id = product.Id });
+            _context.Products.Add(product);
+            await _context.SaveChangesAsync();
+
+            return CreatedAtAction(nameof(GetById), new { id = product.Id }, product);
         }
 
         // PUT: api/Product/{id}
         [HttpPut("{id:int}")]
-        public ActionResult Put(int id, [FromBody] Product updatedProduct)
+        public async Task<IActionResult> Put(int id, [FromBody] Product updatedProduct)
         {
-            var existingProduct = ProductList.FirstOrDefault(p => p.Id == id);
-            if (existingProduct == null)
+            if (id != updatedProduct.Id)
             {
-                return NotFound(new { Message = $"Le produit avec l'ID {id} n'existe pas." });
+                return BadRequest();
             }
 
-            existingProduct.Nom = updatedProduct.Nom ?? existingProduct.Nom;
-            existingProduct.Texture = updatedProduct.Texture ?? existingProduct.Texture;
-            existingProduct.Grammage = updatedProduct.Grammage ?? existingProduct.Grammage;
-            existingProduct.Couleur = updatedProduct.Couleur ?? existingProduct.Couleur;
+            _context.Entry(updatedProduct).State = EntityState.Modified;
+
+            try
+            {
+                await _context.SaveChangesAsync();
+            }
+            catch (DbUpdateConcurrencyException)
+            {
+                if (!ProductExists(id))
+                {
+                    return NotFound(new { Message = $"Le produit avec l'ID {id} n'existe pas." });
+                }
+                else
+                {
+                    throw;
+                }
+            }
 
             return NoContent(); // 204 No Content
         }
 
         // DELETE: api/Product/{id}
         [HttpDelete("{id:int}")]
-        public ActionResult Delete(int id)
+        public async Task<IActionResult> Delete(int id)
         {
-            var product = ProductList.FirstOrDefault(p => p.Id == id);
+            var product = await _context.Products.FindAsync(id);
             if (product == null)
             {
                 return NotFound(new { Message = $"Le produit avec l'ID {id} n'existe pas." });
             }
 
-            ProductList.Remove(product);
+            _context.Products.Remove(product);
+            await _context.SaveChangesAsync();
+
             return NoContent(); // 204 No Content
+        }
+
+        private bool ProductExists(int id)
+        {
+            return _context.Products.Any(e => e.Id == id);
         }
     }
 }
