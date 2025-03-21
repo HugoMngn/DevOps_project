@@ -37,15 +37,14 @@ jobs:
         with:
           dotnet-version: '6.0.x'
       
+      - name: Restore dependencies
+        run: dotnet restore back/Paper.Api.csproj
+      
       - name: Build the project
-        run: |
-          cd back
-          dotnet build --configuration Release --no-restore
+        run: dotnet build back/Paper.Api.csproj --configuration Release --no-restore
       
       - name: Run tests
-        run: |
-          cd back
-          dotnet test --no-restore --verbosity normal
+        run: dotnet test back/Paper.Api.csproj --no-restore --verbosity normal
 
   integration:
     name: Integration Tests
