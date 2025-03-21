@@ -5,6 +5,11 @@ services:
       dockerfile: Dockerfile
     networks:
       - app-network
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://frontend:80"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
 
   backend:
     build:
@@ -12,7 +17,7 @@ services:
       dockerfile: Dockerfile
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
-      - MYSQL_HOST=db  # Utiliser 'db' comme hôte MySQL
+      - MYSQL_HOST=db
       - MYSQL_PORT=3306
       - MYSQL_USER=user
       - MYSQL_PASSWORD=password
@@ -20,7 +25,13 @@ services:
     networks:
       - app-network
     depends_on:
-      - db
+      db:
+        condition: service_healthy
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://backend:8080/health"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
 
   nginx-proxy:
     image: nginx:latest
@@ -29,12 +40,21 @@ services:
     ports:
       - "8080:80"
     depends_on:
-      - frontend
-      - backend
-      - keycloak
-      - db
+      frontend:
+        condition: service_healthy
+      backend:
+        condition: service_healthy
+      keycloak:
+        condition: service_healthy
+      db:
+        condition: service_healthy
     networks:
       - app-network
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
 
   keycloak:
     image: quay.io/keycloak/keycloak:latest
@@ -51,6 +71,11 @@ services:
     networks:
       - app-network
     restart: always
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://keycloak:8080/health"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
 
   db:
     image: mysql:latest
@@ -64,7 +89,7 @@ services:
       - "3306:3306"
     volumes:
       - db_data:/var/lib/mysql
-      - ./mysql-init:/docker-entrypoint-initdb.d 
+      - ./mysql-init:/docker-entrypoint-initdb.d
     networks:
       - app-network
     healthcheck:
