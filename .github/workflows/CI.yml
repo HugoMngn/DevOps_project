@@ -37,11 +37,6 @@ jobs:
         with:
           dotnet-version: '6.0.x'
       
-      - name: Restore dependencies
-        run: |
-          cd back
-          dotnet restore
-      
       - name: Build the project
         run: |
           cd back
