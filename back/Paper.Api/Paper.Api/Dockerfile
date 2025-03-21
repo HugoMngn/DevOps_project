@@ -8,7 +8,6 @@ EXPOSE 8081
 ENV DOTNET_SYSTEM_GLOBALIZATION_INVARIANT=1 \
     ConnectionStrings__DefaultConnection="Server=db;Database=paperdb;User=user;Password=password;"
 
-
 # Étape 2 : Build de l'application
 FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
 ARG BUILD_CONFIGURATION=Release
@@ -42,8 +41,6 @@ RUN chmod +x /app/entrypoint.sh
 HEALTHCHECK --interval=30s --timeout=10s --start-period=10s --retries=3 \
     CMD curl --fail http://localhost:8080/health || exit 1
 
-# Installer l'outil dotnet-ef
-RUN dotnet tool install --global dotnet-ef
 
 # Ajouter le répertoire des outils dotnet au PATH
 ENV PATH="${PATH}:/root/.dotnet/tools"

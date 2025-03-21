@@ -80,9 +80,6 @@ services:
       - app-network
     entrypoint: ["/bin/sh", "/entrypoint.sh"]
 
-
-
-
   db:
     image: mysql:latest
     restart: always
