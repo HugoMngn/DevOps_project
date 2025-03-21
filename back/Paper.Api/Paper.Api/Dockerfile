@@ -8,6 +8,7 @@ EXPOSE 8081
 ENV DOTNET_SYSTEM_GLOBALIZATION_INVARIANT=1 \
     ConnectionStrings__DefaultConnection="Server=db;Database=paperdb;User=user;Password=password;"
 
+
 # Étape 2 : Build de l'application
 FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
 ARG BUILD_CONFIGURATION=Release
@@ -15,7 +16,7 @@ WORKDIR /src
 
 # Copier le projet et restaurer les dépendances
 COPY ["Paper.Api.csproj", "./"]
-RUN dotnet restore "Paper.Api.csproj"
+RUN dotnet restore "Paper.Api.csproj" --no-cache
 
 # Copier le reste du code et compiler
 COPY . .
@@ -26,8 +27,8 @@ FROM build AS publish
 ARG BUILD_CONFIGURATION=Release
 RUN dotnet publish "Paper.Api.csproj" -c $BUILD_CONFIGURATION -o /app/publish /p:UseAppHost=false
 
-# Étape 4 : Préparer l'image finale avec SDK et runtime
-FROM mcr.microsoft.com/dotnet/sdk:8.0 AS final
+# Étape 4 : Préparer l'image finale
+FROM mcr.microsoft.com/dotnet/aspnet:8.0 AS final
 WORKDIR /app
 
 # Copier l’application publiée

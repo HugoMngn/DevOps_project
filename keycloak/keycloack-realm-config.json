@@ -1,0 +1,28 @@
+{
+    "realm": "paper",
+    "enabled": true,
+    "clients": [
+        {
+            "clientId": "paper",
+            "enabled": true,
+            "protocol": "openid-connect",
+            "redirectUris": [
+                "http://localhost:8080/*"
+            ]
+        }
+    ],
+    "users": [
+        {
+            "username": "test",
+            "enabled": true,
+            "emailVerified": false,
+            "credentials": [
+                {
+                    "type": "password",
+                    "value": "test",
+                    "temporary": false
+                }
+            ]
+        }
+    ]
+}

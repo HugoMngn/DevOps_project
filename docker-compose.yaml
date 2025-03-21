@@ -31,7 +31,7 @@ services:
       test: ["CMD", "curl", "-f", "http://backend:8080/health"]
       interval: 10s
       timeout: 5s
-      retries: 5
+      retries: 30
 
   nginx-proxy:
     image: nginx:latest
@@ -42,10 +42,6 @@ services:
     depends_on:
       frontend:
         condition: service_healthy
-      backend:
-        condition: service_healthy
-      keycloak:
-        condition: service_healthy
       db:
         condition: service_healthy
     networks:
@@ -54,7 +50,7 @@ services:
       test: ["CMD", "curl", "-f", "http://localhost"]
       interval: 10s
       timeout: 5s
-      retries: 5
+      retries: 30
 
   keycloak:
     image: quay.io/keycloak/keycloak:latest
@@ -64,8 +60,7 @@ services:
       - KC_BOOTSTRAP_ADMIN_PASSWORD=admin
       - KC_HOSTNAME_STRICT=false
       - KC_HOSTNAME_STRICT_HTTPS=false
-    command:
-      - start-dev
+    command: "start-dev"
     ports:
       - "8085:8080"
     networks:
@@ -75,7 +70,18 @@ services:
       test: ["CMD", "curl", "-f", "http://keycloak:8080/health"]
       interval: 10s
       timeout: 5s
-      retries: 5
+      retries: 20
+
+  keycloak-setup:
+    image: curlimages/curl:latest
+    volumes:
+      - ./keycloak-setup/entrypoint.sh:/entrypoint.sh
+    networks:
+      - app-network
+    entrypoint: ["/bin/sh", "/entrypoint.sh"]
+
+
+
 
   db:
     image: mysql:latest
