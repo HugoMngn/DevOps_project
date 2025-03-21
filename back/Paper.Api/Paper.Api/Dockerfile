@@ -51,4 +51,4 @@ ENV PATH="${PATH}:/root/.dotnet/tools"
 USER app
 
 # Définir le point d'entrée pour le conteneur
-ENTRYPOINT ["/app/entrypoint.sh"]
+ENTRYPOINT ["dotnet", "Paper.Api.dll"]
